@@ -1,31 +1,241 @@
+/* App.css */
+
+:root {
+  /* --bg-big: #292c34; */
+  --bg-big: black;
+  /* --bg-snd:#2d3039; */
+  --bg-snd: rgb(8, 8, 8);
+  --bg-input:#373d48;
+  --bg-lck: #373d48;
+  --bo-box: #373d48;
+}
+
+body {
+  color: #fff;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  background-color: var(--bg-big);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#chat-container {
+  width: 60vw;
+  margin-bottom: 20px;
+  padding: 20px;
+  overflow-y: auto;
+  height: 80vh;
+  background-color: var(--bg-snd);
+  border-radius: 8px;
+}
+
+#chat-container::-webkit-scrollbar {
+  width: 0px ;
+}
+
+
+.chat-flex {
+  display: flex;
+  justify-content: space-between;
+}
+#img {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 10%;
+}
+#msg {
+  width: 90%;
+  margin-top: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+#chat-container div {
+  margin-bottom: 10px;
+}
+#chat-container img {
+  width:30px;
+  height:30px;
+  border-radius: 50%;
 }
 
-.heart {
-  color: #ff0000;
+#user-input {
+  display: flex;
+  align-items: center;
 }
 
-.small {
-  font-size: 0.75rem;
+input {
+  flex: 1;
+  padding:20px 10px ;
+  width: 60vw;
+  margin-right: 10px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: var(--bg-input);
+  color: #fff;
+}
+input:focus {
+  border: none;
+  outline: none;
+}
+
+#intail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+}
+
+#head {
+  font-size: 100px;
+}
+
+.headDiv {
+  text-align: center;
+  cursor: pointer;
+}
+
+.box {
+  border: 1px solid var(--bo-box);
+  place-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.lck {
+  background: var(--bg-lck);
+}
+p {
+  cursor: pointer;
+}
+
+.boxs {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.auto-type {
+  color: grey;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* .hidden {
+  visibility: hidden;
+} */
+
+@media (max-width: 767px) {
+  .boxs {
+    grid-template-columns: 1fr; /* Set a single column for mobile screens */
+  }
+  
+  .box {
+    width: 100%; /* Make boxes take the full width */
+    margin-bottom: 4px; /* Add a small gap between boxes */
+  }
+
+  #chat-container {
+    width:95%;
+  }
+
+}
+
+
+:root {
+  --purple: rgb(123, 31, 162);
+  --violet: rgb(103, 58, 183);
+  --pink: rgb(244, 143, 177);
+}
+
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+
+@keyframes scale {
+  from,
+  to {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+
+h1 > .magic {
+  display: inline-block;
+  position: relative;
+}
+
+h1 > .magic > .magic-star {
+  --size: clamp(20px, 1.5vw, 30px);
+
+  animation: scale 700ms ease forwards;
+  display: block;
+  height: var(--size);
+  left: var(--star-left);
+  position: absolute;
+  top: var(--star-top);
+  width: var(--size);
+}
+
+h1 > .magic > .magic-star > svg {
+  animation: rotate 1000ms linear infinite;
+  display: block;
+  opacity: 0.7;
+}
+
+h1 > .magic > .magic-star > svg > path {
+  fill: var(--violet);
+}
+
+h1 > .magic > .magic-text {
+  animation: background-pan 3s linear infinite;
+  background: linear-gradient(
+    to right,
+    var(--purple),
+    var(--violet),
+    var(--pink),
+    var(--purple)
+  );
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
 }
